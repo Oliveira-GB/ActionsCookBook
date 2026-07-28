@@ -31,4 +31,4 @@ jobs:
     environment:
       name: Production
       url: https://writeabout.net
-    needs: [Test, first_job]
+    needs: [Test, Load-Test]
