@@ -18,3 +18,17 @@ jobs:
           echo "My secret is ${{ secrets.MY_SECRET }}."
 
       - run: tree
+  Test:
+    runs-on: ubuntu-latest
+    environment: Test
+    needs: first_job
+  Load-Test:
+    runs-on: ubuntu-latest
+    environment: Load-Test
+    needs: first_job
+  Production:
+    runs-on: ubuntu-latest
+    environment:
+      name: Production
+      url: https://writeabout.net
+    needs: [Test, first_job]
